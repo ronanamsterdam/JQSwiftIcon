@@ -1,10 +1,8 @@
 /*
- *  Copyright (c) 2015, Facebook, Inc.
- *  All rights reserved.
+ *  Copyright (c) 2015-present, Facebook, Inc.
  *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
+ *  This source code is licensed under the MIT license found in the
+ *  LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -62,7 +60,7 @@
 
 #define FBSnapshotVerifyViewOrLayerWithOptions(what__, viewOrLayer__, identifier__, suffixes__, tolerance__) \
 { \
-  NSString *errorDescription = [self snapshotVerifyViewOrLayer:viewOrLayer__ identifier:identifier__ suffixes:suffixes__ tolerance:tolerance__]; \
+  NSString *errorDescription = [self snapshotVerifyViewOrLayer:viewOrLayer__ identifier:identifier__ suffixes:suffixes__ tolerance:tolerance__ defaultReferenceDirectory:(@ FB_REFERENCE_IMAGE_DIR)]; \
   BOOL noErrors = (errorDescription == nil); \
   XCTAssertTrue(noErrors, @"%@", errorDescription); \
 }
@@ -120,12 +118,14 @@
  @param identifier An optional identifier, used if there are multiple snapshot tests in a given -test method.
  @param suffixes An NSOrderedSet of strings for the different suffixes
  @param tolerance The percentage difference to still count as identical - 0 mean pixel perfect, 1 means I don't care
+ @param defaultReferenceDirectory The directory to default to for reference images.
  @returns nil if the comparison (or saving of the reference image) succeeded. Otherwise it contains an error description.
  */
 - (NSString *)snapshotVerifyViewOrLayer:(id)viewOrLayer
                              identifier:(NSString *)identifier
                                suffixes:(NSOrderedSet *)suffixes
-                              tolerance:(CGFloat)tolerance;
+                              tolerance:(CGFloat)tolerance
+              defaultReferenceDirectory:(NSString *)defaultReferenceDirectory;
 
 /**
  Performs the comparison or records a snapshot of the layer if recordMode is YES.

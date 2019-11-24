@@ -14,17 +14,17 @@ EXTERNAL SOURCES:
   FBSnapshotTestCase:
     :git: https://github.com/facebook/ios-snapshot-test-case
   JQSwiftIcon:
-    :path: "../"
+    :path: ../
 
 CHECKOUT OPTIONS:
   FBSnapshotTestCase:
-    :commit: a8c9288fb150ea497c1562649663043bd8b113df
+    :commit: 3efc829601128f7d9306e8e58db04d32594b62ce
     :git: https://github.com/facebook/ios-snapshot-test-case
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  FBSnapshotTestCase: a8e5a33928796ea13ebb3e9ea58e0187270d3eff
   JQSwiftIcon: cb6f5ecfe556f3a345cb3bf9d754ae9ae144a421
 
-PODFILE CHECKSUM: 8c95a984b691186cbbfc5c573ff637750fed8cf9
+PODFILE CHECKSUM: ecb738e3f8a7866e178108044717932650066695
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.4.0.beta.1

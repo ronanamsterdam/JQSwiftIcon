@@ -33,10 +33,10 @@ public enum FontsFileNames: String {
 
 func processFont(_ fontSize: CGFloat?, fontFileName: FontsFileNames, attributedString: NSMutableAttributedString, matchedStringArray: [String], substring: String!) {
 
-    let substringRange = NSMakeRange(0, substring.characters.count);
+    let substringRange = NSMakeRange(0, substring.count);
     attributedString.replaceCharacters(in: substringRange, with: String.iconWithCode(fontFileName, code: matchedStringArray[1])!)
     let newRange = _NSRange(location: substringRange.location, length: 1)
-    attributedString.addAttribute(NSFontAttributeName, value: UIFont.iconFontOfSize(fontFileName, fontSize: (fontSize)!), range: newRange)
+    attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.iconFontOfSize(fontFileName, fontSize: (fontSize)!), range: newRange)
 }
 
 func processFontPrefixes(_ fontSize: CGFloat?, attributedString: NSMutableAttributedString, matchedStringArray: [String], substring: String!) {
@@ -81,7 +81,7 @@ func processTextIcons(
 
     let subStr = textToCheck.substring(with: textRange);
     var s = ["", ""];
-    s = subStr.characters.split{$0 == ":"}.map(String.init)
+    s = subStr.split{$0 == ":"}.map(String.init)
     if s.count == 1{
         return
     }
@@ -149,7 +149,7 @@ public extension UITextField{
 public extension UIButton {
     func processIcons() {
         processTextIcons((self.titleLabel?.text)! as NSString, pointSize: (self.titleLabel?.font!.pointSize)!, attributedStringToCheck: (self.titleLabel?.attributedText)!, setTextCallback: {(attributedString: NSAttributedString) in
-            self.setAttributedTitle(attributedString, for: UIControlState())
+            self.setAttributedTitle(attributedString, for: UIControl.State())
         })
     }
 
